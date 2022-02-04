@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Nothing+You+Could+Do&display=swap");
+
+* {
+  font-family: "Dosis", sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.title {
+  font-family: "Nothing You Could Do", cursive;
+  letter-spacing: 0.2rem;
+}
