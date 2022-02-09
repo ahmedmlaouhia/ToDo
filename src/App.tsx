@@ -5,10 +5,12 @@ import NavBar from "./components/NavBar"
 import { Provider } from "./Ctx"
 import Signup from "./components/Signup"
 import "./App.css"
+import { Toaster } from "react-hot-toast"
 
 const App = () => {
   return (
     <Provider>
+      <Toaster />
       <Router>
         <div className="bg-gradient-to-tr from-[#013030] via-[#002536] to-[#09093a] w-screen min-h-screen">
           <NavBar />

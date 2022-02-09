@@ -14,12 +14,10 @@ export const useUsername = () => {
   const { username, setUsername } = useContext(Ctx)
   const login = (token: string, user: any) => {
     localStorage.setItem("token", token)
-    localStorage.setItem("user", JSON.stringify(user))
     setUsername(user.username)
   }
   const logout = () => {
     localStorage.removeItem("token")
-    localStorage.removeItem("user")
     setUsername(null)
   }
   return { username, login, logout }

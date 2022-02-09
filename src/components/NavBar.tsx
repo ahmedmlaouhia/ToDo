@@ -1,3 +1,4 @@
+import toast from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
 import { useUsername } from "../Ctx"
 const NavBar = () => {
@@ -5,6 +6,8 @@ const NavBar = () => {
   const { username, logout } = useUsername()
   const handleLogout = () => {
     logout()
+    toast.success("See you soon 😀")
+
     navigate("/login", { replace: true })
   }
 
@@ -23,11 +26,11 @@ const NavBar = () => {
           </h1>
           <button
             onClick={handleLogout}
-            className="bg-[#eb7f27be] hover:bg-[#eb7f27] hover:shadow-mine duration-200 hover:shadow-[#eb7f27]/30 rounded-2xl px-4 py-1 mx-2 
+            className="bg-[#eb7f27a8] hover:bg-[#eb7f27c4] hover:shadow-mine duration-300 hover:shadow-[#eb7f27]/30 rounded-2xl px-4 py-[6px] mx-2 
             border-none outline-none focus:outline-none
-            text-white text-md font-bold"
+            text-[#093144] text-sm font-black"
           >
-            Logout
+            LOGOUT
           </button>
         </div>
       )}

@@ -63,7 +63,7 @@ const ToDoListItems = () => {
            text-gray-200/70
            placeholder-gray-200/70
            focus:placeholder-gray-800
-           focus:text-black
+           focus:text-gray-900
            "
           placeholder="Add new item"
           onKeyDown={(e) => {
@@ -80,7 +80,7 @@ const ToDoListItems = () => {
         {items.map((item, idx) => (
           <div
             key={idx}
-            className="bg-blue-200/70 text-black rounded-2xl py-2 px-4 "
+            className="bg-blue-200/70 text-gray-900 rounded-2xl py-2 px-4 "
           >
             <Item text={item.text} id={item.id} />
           </div>

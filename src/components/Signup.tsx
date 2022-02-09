@@ -3,6 +3,7 @@ import Input from "./Input"
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import { useEffect } from "react"
+import toast from "react-hot-toast"
 
 const Signup = () => {
   const navigate = useNavigate()
@@ -16,19 +17,21 @@ const Signup = () => {
         .post("http://localhost:6969/signup", data)
         .then((res) => {
           if (res.status == 201) {
+            toast.success("Well done 😉")
             navigate("/login", { replace: true })
           }
         })
         .catch((err) => {
-          alert(err.response.data.error)
+          toast.error(err.response.data.error)
         })
-    } else console.log("password not match")
+    } else toast.error("Passwords don't match 😔")
   }
 
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {
       navigate("/", { replace: true })
+      toast.success("Welcome back 😀")
     }
   }, [])
 
@@ -44,7 +47,7 @@ const Signup = () => {
           <Input name="username" />
           <Input name="password" type="password" />
           <Input name="cpassword" type="password" ph="confirm password" />
-          <Button name="signup" />
+          <Button name="SIGNUP" />
           <h1 className="text-gray-200/70 cursor-default text-center pt-6">
             Already member ?
             <Link

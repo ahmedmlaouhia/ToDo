@@ -1,9 +1,13 @@
 const Item = (props: Props) => {
   return (
-    <div>
+    <div className="flex justify-between items-center">
       <h1>
         {props.id} . {props.text}
       </h1>
+      <input
+        type="checkbox"
+        className="form-check-input appearance-none h-4 w-4 border-2 rounded-lg bg-transparent checked:bg-blue-500 border-blue-500 outline-none duration-200 cursor-pointer"
+      ></input>
     </div>
   )
 }

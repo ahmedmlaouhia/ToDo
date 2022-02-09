@@ -4,6 +4,7 @@ import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
 import { useUsername } from "../Ctx"
 import { useEffect } from "react"
+import toast from "react-hot-toast"
 
 const Login = () => {
   const navigate = useNavigate()
@@ -18,17 +19,19 @@ const Login = () => {
       .then((res) => {
         if (res.data.token) {
           login(res.data.token, res.data.user)
+          toast.success("Welcome back 😀")
           navigate("/", { replace: true })
         }
       })
       .catch((err) => {
-        alert(err.response.data.error)
+        toast.error(err.response.data.error)
       })
   }
 
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {
+      toast.success("Welcome back 😀")
       navigate("/", { replace: true })
     }
   }, [])
@@ -44,7 +47,7 @@ const Login = () => {
         <form onSubmit={handleLogin}>
           <Input name="username" />
           <Input name="password" type="password" />
-          <Button name="login" />
+          <Button name="LOGIN" />
           <h1 className="text-gray-200/70 cursor-default text-center pt-6">
             not joined yet ?
             <Link
