@@ -6,7 +6,7 @@ const Item = (props: Props) => {
       </h1>
       <input
         type="checkbox"
-        className="form-check-input appearance-none h-4 w-4 border-2 rounded-lg bg-transparent checked:bg-blue-500 border-blue-500 outline-none duration-200 cursor-pointer"
+        className="appearance-none h-4 w-4 border-2 rounded-lg bg-transparent checked:bg-blue-500 border-blue-500 outline-none duration-200 cursor-pointer"
       ></input>
     </div>
   )

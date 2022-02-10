@@ -42,7 +42,7 @@ const ToDoListItems = () => {
   const { task, items, handleAddItem, setTask } = useToDo()
 
   return (
-    <div className="mx-auto bg-white/20 md:w-1/2 w-4/5 xl:w-1/3 rounded-2xl mt-10 px-10 py-5">
+    <div className="mx-auto duration-100 md:w-1/2 w-4/5 xl:w-1/2 rounded-2xl mt-10 px-10 py-5">
       <div className="flex flex-col flex-wrap justify-center gap-6">
         <input
           value={task}
