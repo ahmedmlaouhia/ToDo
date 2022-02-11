@@ -15,7 +15,7 @@ const NavBar = () => {
     <div className="absolute -top-11 hover:top-0 duration-200 w-full pb-4 z-20">
       <div className="  flex justify-between items-center bg-[#1e749c4b] py-3 px-10 backdrop-blur-lg ">
         <div className="flex items-center">
-          <h1 className="text-2xl font-bold text-[#eb7f27be] cursor-default title">
+          <h1 className="text-2xl font-black text-[#db6b10e1] cursor-default title">
             Lis't ToDo It
           </h1>
         </div>
