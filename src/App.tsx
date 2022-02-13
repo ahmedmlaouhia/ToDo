@@ -12,7 +12,7 @@ const App = () => {
     <Provider>
       <Toaster />
       <Router>
-        <div className="bg-gradient-to-tr from-[#013030] via-[#002536] to-[#09093a] w-full min-w-[700px] min-h-screen">
+        <div className="bg-gradient-to-tr from-[#011d1d] via-[#001a25] to-[#050520] w-full min-w-[700px] min-h-screen">
           <NavBar />
           <Routes>
             <Route path="/login" element={<Login />} />

@@ -1,47 +1,75 @@
 import { createContext, useContext, useState, useEffect } from "react"
 
 type ContextState = {
-  username: null | string
-  setUsername: (username: string | null) => void
+  user: User | null
+  setUser: (user: User | null) => void
+  isAuthenticated: boolean | null
+  setIsAuthenticated: (isAuthenticated: boolean | null) => void
+  isLoading: boolean | null
+  setIsLoading: (isLoading: boolean | null) => void
 }
 
 const initial = {
-  username: null,
-  setUsername: () => {}
+  isLoading: null,
+  setIsLoading: () => {},
+  isAuthenticated: null,
+  setIsAuthenticated: () => {},
+  user: null,
+  setUser: () => {}
 }
 
-export const useUsername = () => {
-  const { username, setUsername } = useContext(Ctx)
-  const login = (token: string, user: any) => {
+export const useAuthentication = () => {
+  const { user, setUser } = useContext(Ctx)
+  const { isAuthenticated, setIsAuthenticated } = useContext(Ctx)
+  const { isLoading, setIsLoading } = useContext(Ctx)
+  const login = (token: string, user: User) => {
     localStorage.setItem("token", token)
-    setUsername(user.username)
+    setUser(user)
+    setIsAuthenticated(true)
   }
   const logout = () => {
     localStorage.removeItem("token")
-    setUsername(null)
+    setUser(null)
+    setIsAuthenticated(false)
   }
-  return { username, login, logout }
+  return {
+    user,
+    login,
+    logout,
+    isAuthenticated,
+    isLoading: isAuthenticated === null
+  }
 }
 
 const Ctx = createContext<ContextState>(initial)
 
 export const Provider = ({ children }: Props) => {
-  const [username, setUsername] = useState<null | string>(null)
-
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean | null>(null)
+  const [user, setUser] = useState<null | User>(null)
   useEffect(() => {
-    const username = JSON.parse(localStorage.getItem("user") || "{}").username
-    if (username) {
-      setUsername(username)
+    const token = localStorage.getItem("token")
+    if (token) {
+      setIsAuthenticated(true)
+      setIsLoading(false)
     } else {
-      setUsername(null)
+      setIsAuthenticated(false)
+      setIsLoading(false)
     }
   }, [])
-
   const value = {
-    username,
-    setUsername
+    isLoading,
+    setIsLoading,
+    user,
+    setUser,
+    isAuthenticated,
+    setIsAuthenticated
   }
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>
+}
+
+type User = {
+  username: string
 }
 
 type Props = {

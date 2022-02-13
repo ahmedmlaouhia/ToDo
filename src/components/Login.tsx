@@ -2,13 +2,13 @@ import Button from "./Button"
 import Input from "./Input"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
-import { useUsername } from "../Ctx"
+import { useAuthentication } from "../Ctx"
 import { useEffect } from "react"
 import toast from "react-hot-toast"
 
 const Login = () => {
   const navigate = useNavigate()
-  const { login } = useUsername()
+  const { login } = useAuthentication()
 
   const handleLogin = (e: any) => {
     e.preventDefault()

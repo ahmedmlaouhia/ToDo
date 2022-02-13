@@ -11,7 +11,7 @@
 }
 
 .sidebar::-webkit-scrollbar {
-  width: 6px;
+  width: 3px;
 }
 
 .sidebar::-webkit-scrollbar-track {
@@ -24,13 +24,7 @@
 .sidebar:hover::-webkit-scrollbar-thumb {
   background: linear-gradient(
     0deg,
-    #1e749c67 0%,
-    rgba(255, 136, 0, 0.308) 100%
+    #1e749c8a 0%,
+    rgba(255, 136, 0, 0.445) 100%
   );
-  --tw-backdrop-blur: blur(24px);
-  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness)
-    var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale)
-    var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert)
-    var(--tw-backdrop-opacity) var(--tw-backdrop-saturate)
-    var(--tw-backdrop-sepia);
 }

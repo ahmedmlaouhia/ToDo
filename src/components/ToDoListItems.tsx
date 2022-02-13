@@ -42,21 +42,22 @@ const ToDoListItems = () => {
   const { task, items, handleAddItem, setTask } = useToDo()
 
   return (
-    <div className="mx-auto duration-100 md:w-1/2 w-4/5 xl:w-1/2 rounded-2xl mt-10 px-10 py-5">
-      <div className="flex flex-col flex-wrap justify-center gap-6">
+    <div className=" mx-auto duration-100">
+      <div className="flex flex-col flex-wrap justify-center gap-4">
         <input
           value={task}
           onChange={(e) => setTask(e.target.value)}
           type="text"
-          className="w-full
+          className="
+            mx-10
            bg-gray-500/50
            focus:bg-gray-300/70
            focus:duration-300
            duration-300
            border-none
-           rounded-2xl
+           rounded-md
            px-4
-           py-2
+           py-3
            focus:outline-none
            border-2
            outline-none
@@ -74,17 +75,19 @@ const ToDoListItems = () => {
         />
         {items.length === 0 && (
           <div className="text-center text-gray-500">
-            <h1 className="text-3xl text-white/80">No items yet</h1>
+            <h1 className="text-3xl  text-white/80">No items yet</h1>
           </div>
         )}
-        {items.map((item, idx) => (
-          <div
-            key={idx}
-            className="bg-blue-200/70 text-gray-900 rounded-2xl py-2 px-4 "
-          >
-            <Item text={item.text} id={item.id} />
-          </div>
-        ))}
+        <div className="sidebar flex flex-col gap-4 h-[calc(100vh-210px)] px-10 overflow-auto">
+          {items.map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-blue-200/70 text-gray-900 rounded-md py-3 px-4"
+            >
+              <Item text={item.text} id={item.id} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

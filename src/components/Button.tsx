@@ -7,7 +7,7 @@ const Button = (props: any) => {
         hover:bg-teal-700/40
         focus:outline-none
         text-[#87beca]
-        font-bold
+        font-medium
         py-2
         px-4
         hover:shadow-mine
