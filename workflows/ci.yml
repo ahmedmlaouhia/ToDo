@@ -1,0 +1,24 @@
+name: node with push to dockerhub
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build
+        run: docker build -t todofront .
+      - name: tag
+        run: docker tag todofront masterbohmid/todofront:latest
+      - name: push
+        run: docker push masterbohmid/todofront:latest

@@ -1,18 +1,22 @@
-FROM node:16
-
+FROM node:16 as react_build
+#also say 
 WORKDIR /app
+#copy the react app to the container
+COPY . /app/ 
 
-ENV PORT 4173
-ENV HOST 0.0.0.0
+# #prepare the contiainer for building react 
+RUN npm ci --silent
+RUN npm run build 
 
-COPY package*.json ./
+#prepare nginx
+FROM nginx
 
-RUN npm ci 
+COPY --from=react_build /app/dist /usr/share/nginx/html
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx/nginx.conf /etc/nginx/conf.d
 
-COPY . .
 
-RUN npm run build
 
-EXPOSE 4173
-
-CMD [ "npm" , "start" ]
+#fire up nginx
+EXPOSE 80 
+CMD ["nginx","-g","daemon off;"]
