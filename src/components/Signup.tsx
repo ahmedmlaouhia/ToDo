@@ -14,7 +14,7 @@ const Signup = () => {
     if (data.password === data.cpassword) {
       delete data.cpassword
       axios
-        .post("http://express:6969/signup", data)
+        .post("http://164.132.55.71:6969/signup", data)
         .then((res) => {
           if (res.status == 201) {
             toast.success("Well done 😉")
