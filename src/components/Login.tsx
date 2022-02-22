@@ -15,7 +15,7 @@ const Login = () => {
     const formData = new FormData(e.target)
     const data = Object.fromEntries(formData.entries())
     axios
-      .post("http://164.132.55.71:6969/login", data)
+      .post("http://localhost:6969/login", data)
       .then((res) => {
         if (res.data.token) {
           login(res.data.token, res.data.user)
