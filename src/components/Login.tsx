@@ -31,7 +31,7 @@ const Login = () => {
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {
-      toast.success("Welcome back 😀")
+      toast.success("Welcome back! 😀")
       navigate("/", { replace: true })
     }
   }, [])
