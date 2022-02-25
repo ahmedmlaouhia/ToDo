@@ -19,7 +19,7 @@ const Login = () => {
       .then((res) => {
         if (res.data.token) {
           login(res.data.token, res.data.user)
-          toast.success("Welcome back 😀")
+          toast.success("Welcome back! 😀")
           navigate("/", { replace: true })
         }
       })
